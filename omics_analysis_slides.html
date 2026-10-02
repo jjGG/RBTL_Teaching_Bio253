@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omics Data Analysis & Agentic Workflows | FGCZ</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide-active {
+      display: flex;
+      animation: fadeIn 0.25s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans select-none antialiased">
+
+  <!-- Header -->
+  <header class="w-full bg-slate-900/90 border-b border-slate-800 px-6 py-3 flex items-center justify-between backdrop-blur-md sticky top-0 z-50">
+    <div class="flex items-center space-x-3">
+      <span class="px-2.5 py-1 text-xs font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">FGCZ</span>
+      <span class="text-xs text-slate-400 font-medium hidden sm:inline">UZH | ETH Zurich</span>
+      <span class="text-slate-600">/</span>
+      <span class="text-sm font-semibold text-slate-200">Omics Agentic Workflows</span>
+    </div>
+    <div class="flex items-center space-x-4">
+      <span id="slideCounter" class="text-xs font-mono px-3 py-1 bg-slate-800/80 rounded-full border border-slate-700 text-slate-300">Slide 1 / 8</span>
+      <button id="toggleNotesBtn" onclick="toggleNotes()" class="text-xs px-3 py-1.5 rounded-lg bg-emerald-600/30 hover:bg-emerald-600/50 border border-emerald-500/40 text-emerald-300 transition-all flex items-center space-x-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span>Speaker Notes</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide Canvas -->
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-8 flex flex-col justify-center">
+
+    <!-- Slide 1: Title & Banner -->
+    <section class="slide slide-active flex-col gap-6" data-slide="1">
+      <div class="relative overflow-hidden rounded-2xl border border-slate-800 shadow-2xl bg-slate-900 group">
+        <img src="./fgcz_omics_agentic_banner_1790927902020.jpg" 
+             alt="FGCZ Omics Agentic Workflow Banner" 
+             class="w-full object-cover max-h-[380px] rounded-2xl filter brightness-95 contrast-105">
+      </div>
+      <div class="bg-slate-900/60 p-6 rounded-xl border border-slate-800/80">
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2">
+          Omics Analysis via Agentic AI Workflows
+        </h1>
+        <p class="text-lg text-slate-300 font-light mb-4">
+          Structuring Project Workspaces, Prompt-to-Code Pipelines & Automated Scientific Reporting
+        </p>
+        <div class="flex flex-wrap gap-4 text-xs text-slate-400 border-t border-slate-800/80 pt-4">
+          <span>🔬 <strong class="text-slate-300">Domains:</strong> Transcriptomics, Proteomics, Metabolomics, Single-Cell</span>
+          <span>📂 <strong class="text-slate-300">Method:</strong> Multi-file Workspace Scoping & Automated Synthesis</span>
+          <span>🏛️ <strong class="text-slate-300">Facility:</strong> Functional Genomics Center Zurich (UZH / ETH)</span>
+        </div>
+      </div>
+      <div class="speaker-note hidden bg-emerald-950/40 border border-emerald-800/50 rounded-lg p-4 text-xs text-emerald-200">
+        <strong>💡 Teaching Goal:</strong> Introduce how modern agentic AI can take a raw project folder of omics tables (counts, metadata, annotations) and autonomously conduct quality control, differential analysis, visualization, and report generation when given a clear, reproducible prompt.
+      </div>
+    </section>
+
+    <!-- Slide 2: The Multi-File Workspace Pattern -->
+    <section class="slide hidden flex-col gap-6" data-slide="2">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-emerald-400">Architecture</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">The Ideal Omics Workspace Layout</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <!-- Directory Tree -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-5 font-mono text-xs text-slate-300">
+          <div class="text-emerald-400 font-bold mb-3 flex items-center space-x-2">
+            <span>📁 my_omics_project/</span>
+          </div>
+          <div class="pl-4 space-y-1.5 border-l border-slate-700/60">
+            <div>├── <span class="text-amber-300 font-semibold">data/</span></div>
+            <div class="pl-4 text-slate-400">├── counts_matrix.tsv <span class="text-[10px] text-slate-500">(genes × samples)</span></div>
+            <div class="pl-4 text-slate-400">├── sample_metadata.csv <span class="text-[10px] text-slate-500">(conditions, batches)</span></div>
+            <div class="pl-4 text-slate-400">└── gene_annotations.tsv <span class="text-[10px] text-slate-500">(symbols, biotypes)</span></div>
+            <div>├── <span class="text-cyan-300 font-semibold">analysis_prompt.md</span> <span class="text-[10px] text-emerald-400 font-bold">★ AI Instructions</span></div>
+            <div>├── <span class="text-purple-300 font-semibold">scripts/</span> <span class="text-[10px] text-slate-500">(AI writes code here)</span></div>
+            <div>├── <span class="text-rose-300 font-semibold">results/</span> <span class="text-[10px] text-slate-500">(volcano.png, pca.png, degs.csv)</span></div>
+            <div>├── <span class="text-blue-300 font-semibold">report.qmd</span> <span class="text-[10px] text-slate-500">(Quarto / Rmd document)</span></div>
+            <div>└── <span class="text-slate-400 font-semibold">.gitignore</span> <span class="text-[10px] text-red-400">(Never commit raw GBs!)</span></div>
+          </div>
+        </div>
+
+        <!-- Principles -->
+        <div class="space-y-4 text-xs">
+          <div class="bg-slate-900/70 border border-slate-800 rounded-xl p-4">
+            <h3 class="text-sm font-semibold text-emerald-400 mb-1">1. Clean Separation of Data & Metadata</h3>
+            <p class="text-slate-300">Never mix experimental design into the expression matrix. The AI needs a dedicated `sample_metadata.csv` to map sample IDs to treatment groups.</p>
+          </div>
+          <div class="bg-slate-900/70 border border-slate-800 rounded-xl p-4">
+            <h3 class="text-sm font-semibold text-cyan-400 mb-1">2. Provide Data Dictionaries</h3>
+            <p class="text-slate-300">Include header notes or a markdown snippet describing column definitions (e.g. `Condition: WT vs KO`, `Batch: Replicate 1-3`).</p>
+          </div>
+          <div class="bg-slate-900/70 border border-slate-800 rounded-xl p-4">
+            <h3 class="text-sm font-semibold text-amber-400 mb-1">3. Processed Tables over Raw Fastq/Raw MS</h3>
+            <p class="text-slate-300">Do not point the agent to 50GB FASTQ or mzML files. Point it to quantified count matrices, peptide tables, or AnnData summaries.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note hidden bg-emerald-950/40 border border-emerald-800/50 rounded-lg p-4 text-xs text-emerald-200">
+        <strong>💡 Teaching Goal:</strong> Emphasize that workspace organization is 80% of agentic success. When file paths, metadata columns, and inputs are tidy, the AI writes correct scripts on the first try with minimal hallucinated column names.
+      </div>
+    </section>
+
+    <!-- Slide 3: The Master Omics Prompt -->
+    <section class="slide hidden flex-col gap-6" data-slide="3">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-emerald-400">Prompt Engineering</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Anatomy of an Effective Omics Agent Prompt</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+        <!-- The Prompt Template -->
+        <div class="bg-slate-900/90 border border-cyan-500/30 rounded-xl p-5 flex flex-col justify-between font-mono text-[11px] leading-relaxed text-slate-200">
+          <div>
+            <div class="text-xs uppercase text-cyan-400 font-bold mb-2">Prompt Specification Example</div>
+            <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-2 text-slate-300">
+              <p><strong class="text-emerald-400">Task:</strong> Run differential expression on `data/counts_matrix.tsv` using sample conditions in `data/sample_metadata.csv` (Control vs Treatment).</p>
+              <p><strong class="text-cyan-400">Workflow:</strong></p>
+              <p class="pl-2">1. Normalize using DESeq2 (or edgeR / limma-voom).</p>
+              <p class="pl-2">2. Generate PCA plot (PC1 vs PC2, colored by Condition, shaped by Batch) ➔ save to `results/pca.png`.</p>
+              <p class="pl-2">3. Extract DEGs: log2FC &gt; 1.0, Benjamini-Hochberg FDR &lt; 0.05.</p>
+              <p class="pl-2">4. Produce an interactive Volcano plot and Heatmap of top 50 genes.</p>
+              <p><strong class="text-purple-400">Deliverable:</strong> Write all code into `scripts/analyze_degs.py` (or `.R`), run it in terminal, verify zero errors, and output an executive summary in `report.md`.</p>
+            </div>
+          </div>
+          <div class="mt-3 text-[10px] text-cyan-300">
+            ✓ Explicit input paths &nbsp;•&nbsp; ✓ Statistical thresholds &nbsp;•&nbsp; ✓ Output destinations
+          </div>
+        </div>
+
+        <!-- 4 Crucial Prompt Elements -->
+        <div class="space-y-3.5">
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+            <h4 class="font-bold text-emerald-400 mb-1">1. Explicit Statistical Cutoffs</h4>
+            <p class="text-slate-300">Never say "find significant genes." State the exact FDR adjustment (<code class="text-emerald-300">padj &lt; 0.05</code>) and effect size (<code class="text-emerald-300">|log2FC| &ge; 1</code>).</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+            <h4 class="font-bold text-cyan-400 mb-1">2. Batch Effect Awareness</h4>
+            <p class="text-slate-300">Instruct the agent whether to include batch covariates in the design formula (<code class="text-cyan-300">design = ~ Batch + Condition</code>).</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+            <h4 class="font-bold text-purple-400 mb-1">3. Self-Verification Requirement</h4>
+            <p class="text-slate-300">Add the instruction: <em>"Execute the script via terminal. If a package is missing or code fails, fix the code and rerun until clean exit code 0."</em></p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+            <h4 class="font-bold text-amber-400 mb-1">4. Format of Deliverable</h4>
+            <p class="text-slate-300">Require the agent to write clean, modular scripts plus a Quarto/Markdown report instead of just dumping stdout.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note hidden bg-emerald-950/40 border border-emerald-800/50 rounded-lg p-4 text-xs text-emerald-200">
+        <strong>💡 Teaching Goal:</strong> Show students how fuzzy prompts lead to generic answers, while structured prompts produce ready-to-publish analysis pipelines.
+      </div>
+    </section>
+
+    <!-- Slide 4: Autonomous Execution Loop -->
+    <section class="slide hidden flex-col gap-6" data-slide="4">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-emerald-400">Execution Cycle</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">What the Agent Does in the Workspace</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 text-xs">
+        <!-- Step 1 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+          <div>
+            <span class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs mb-3">01</span>
+            <h3 class="font-bold text-slate-200 mb-1">Inspection</h3>
+            <p class="text-slate-400">Agent reads file headers, shapes, and column names without loading full GBs into context.</p>
+          </div>
+          <div class="mt-3 text-[10px] font-mono text-emerald-300 bg-slate-950 p-1.5 rounded">
+            head -n 5 counts.tsv
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+          <div>
+            <span class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xs mb-3">02</span>
+            <h3 class="font-bold text-slate-200 mb-1">Code Authoring</h3>
+            <p class="text-slate-400">Writes complete statistical scripts in R or Python (DESeq2, PyDESeq2, scanpy, protti).</p>
+          </div>
+          <div class="mt-3 text-[10px] font-mono text-cyan-300 bg-slate-950 p-1.5 rounded">
+            write_to_file script.py
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+          <div>
+            <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs mb-3">03</span>
+            <h3 class="font-bold text-slate-200 mb-1">Terminal Run & Fix</h3>
+            <p class="text-slate-400">Executes the code. If an index mismatch or NA issue appears, reads traceback and patches bug.</p>
+          </div>
+          <div class="mt-3 text-[10px] font-mono text-amber-300 bg-slate-950 p-1.5 rounded">
+            python3 scripts/run.py
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+          <div>
+            <span class="w-7 h-7 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs mb-3">04</span>
+            <h3 class="font-bold text-slate-200 mb-1">Synthesis & Report</h3>
+            <p class="text-slate-400">Generates figures, summarizes top pathways, writes markdown / HTML report with embedded graphs.</p>
+          </div>
+          <div class="mt-3 text-[10px] font-mono text-purple-300 bg-slate-950 p-1.5 rounded">
+            quarto render report.qmd
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/70 border border-emerald-500/30 rounded-xl p-4 text-xs text-slate-300 flex items-center space-x-3">
+        <span class="text-emerald-400 text-lg">💡</span>
+        <span><strong>The Key Pedagogical Difference:</strong> The student acts as the Principal Investigator / Reviewer. They verify the biological plausibility of the results, rather than debugging syntax typos.</span>
+      </div>
+
+      <div class="speaker-note hidden bg-emerald-950/40 border border-emerald-800/50 rounded-lg p-4 text-xs text-emerald-200">
+        <strong>💡 Teaching Goal:</strong> Walk through the agent loop step-by-step. Stress that students must inspect the generated figures and statistical tables critically (checking p-value histograms, volcano symmetry, PCA clustering).
+      </div>
+    </section>
+
+    <!-- Slide 5: Automated Scientific Reporting -->
+    <section class="slide hidden flex-col gap-6" data-slide="5">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-emerald-400">Deliverables</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Generating Publication-Grade Reports</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+          <div class="text-cyan-400 font-bold text-sm mb-2 flex items-center space-x-2">
+            <span>📊</span>
+            <h3>Standard Figures</h3>
+          </div>
+          <p class="text-slate-400 leading-relaxed mb-3">AI automatically creates and saves vector or high-DPI raster figures:</p>
+          <ul class="space-y-1.5 text-slate-300 list-disc list-inside text-[11px]">
+            <li>PCA / UMAP with variance %</li>
+            <li>Volcano plots with gene labels</li>
+            <li>Clustered expression heatmaps</li>
+            <li>GO / KEGG bar charts</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+          <div class="text-emerald-400 font-bold text-sm mb-2 flex items-center space-x-2">
+            <span>📝</span>
+            <h3>Statistical Tables</h3>
+          </div>
+          <p class="text-slate-400 leading-relaxed mb-3">AI writes clean CSV/TSV outputs with clear biological headers:</p>
+          <ul class="space-y-1.5 text-slate-300 list-disc list-inside text-[11px]">
+            <li>Full differential results table</li>
+            <li>Filtered significant DEGs table</li>
+            <li>Pathway enrichment test scores</li>
+            <li>QC metrics per sample</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+          <div class="text-purple-400 font-bold text-sm mb-2 flex items-center space-x-2">
+            <span>📄</span>
+            <h3>Synthesized Report</h3>
+          </div>
+          <p class="text-slate-400 leading-relaxed mb-3">A unified Quarto (<code class="text-purple-300">.qmd</code>) or Markdown document:</p>
+          <ul class="space-y-1.5 text-slate-300 list-disc list-inside text-[11px]">
+            <li>Executive biological summary</li>
+            <li>Methods & package versions</li>
+            <li>Embedded plots & interpretation</li>
+            <li>Reproducibility code appendix</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800 rounded-lg p-3.5 text-xs text-slate-300 font-mono text-center">
+        Quarto / RMarkdown ensures that code execution and document rendering happen in a single reproducible step.
+      </div>
+
+      <div class="speaker-note hidden bg-emerald-950/40 border border-emerald-800/50 rounded-lg p-4 text-xs text-emerald-200">
+        <strong>💡 Teaching Goal:</strong> Show students how the agent can bundle findings into an HTML or PDF report. Emphasize that reproducible reporting is a cornerstone of modern bioinformatic standards.
+      </div>
+    </section>
+
+    <!-- Slide 6: Common Pitfalls & Guardrails -->
+    <section class="slide hidden flex-col gap-6" data-slide="6">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-rose-400">Quality Control</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">4 Bioinformatic Pitfalls to Watch Out For</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-rose-500/30">
+          <div class="flex items-center space-x-2 text-rose-400 font-bold mb-1.5">
+            <span>⚠️</span>
+            <h3>1. The Unadjusted p-Value Trap</h3>
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            AI models sometimes default to raw p-values (<code class="text-rose-300">p &lt; 0.05</code>) instead of multiple-testing adjusted values (FDR / Benjamini-Hochberg). <em>Always prompt specifically for adjusted p-values!</em>
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-rose-500/30">
+          <div class="flex items-center space-x-2 text-rose-400 font-bold mb-1.5">
+            <span>⚠️</span>
+            <h3>2. Missing Sample Order Verification</h3>
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            In tools like DESeq2, the column names of the count matrix MUST match the row names of the metadata in the exact same order. Instruct the agent to add: <code class="text-slate-200 font-mono text-[10px]">assert all(counts.columns == metadata.index)</code>.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-rose-500/30">
+          <div class="flex items-center space-x-2 text-rose-400 font-bold mb-1.5">
+            <span>⚠️</span>
+            <h3>3. Ingesting Multi-Gigabyte Data Tables</h3>
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            If the agent opens a 2GB raw file, it will choke your token rate limits. Keep raw data in a folder listed in <code class="text-slate-200 font-mono text-[10px]">.gitignore</code> and let the agent interact with it strictly via terminal commands.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-rose-500/30">
+          <div class="flex items-center space-x-2 text-rose-400 font-bold mb-1.5">
+            <span>⚠️</span>
+            <h3>4. Hallucinated Gene Identifiers</h3>
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            Never ask the AI to "guess missing gene symbols." Require it to join against the provided <code class="text-slate-200 font-mono text-[10px]">gene_annotations.tsv</code> or use standard Ensembl/NCBI mappings.
+          </p>
+        </div>
+      </div>
+
+      <div class="speaker-note hidden bg-emerald-950/40 border border-emerald-800/50 rounded-lg p-4 text-xs text-emerald-200">
+        <strong>💡 Teaching Goal:</strong> Reinforce that AI does not replace scientific understanding. Students are responsible for verifying that the statistical model matches the experimental biology.
+      </div>
+    </section>
+
+    <!-- Slide 7: Live Lab Demo Workflow -->
+    <section class="slide hidden flex-col gap-6" data-slide="7">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-emerald-400">Classroom Exercise</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Step-by-Step Lab Protocol for Students</h2>
+      </div>
+
+      <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 text-xs text-slate-300 space-y-4">
+        <div class="flex items-start space-x-3">
+          <div class="w-6 h-6 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
+          <div>
+            <strong class="text-white block">Download the Lab Dataset</strong>
+            <span>Clone the course repository containing `counts.tsv` (1,000 top genes) and `metadata.csv` (3 Control vs 3 Drug Treated).</span>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3">
+          <div class="w-6 h-6 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
+          <div>
+            <strong class="text-white block">Open the Workspace in Antigravity</strong>
+            <span>Launch Antigravity, select the project directory as your workspace. Verify the file tree is visible.</span>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3">
+          <div class="w-6 h-6 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</div>
+          <div>
+            <strong class="text-white block">Feed the Standardized Prompt</strong>
+            <span>Paste the analysis prompt into the Agent chat. Ask for QC PCA, differential expression, volcano plot, and summary table.</span>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3">
+          <div class="w-6 h-6 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">4</div>
+          <div>
+            <strong class="text-white block">Critique & Peer Review the Output</strong>
+            <span>Open `results/pca.png` and `report.md`. Do samples cluster by treatment or by batch? Does the volcano plot look symmetric?</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note hidden bg-emerald-950/40 border border-emerald-800/50 rounded-lg p-4 text-xs text-emerald-200">
+        <strong>💡 Teaching Goal:</strong> This slide serves as the exact playbook for a 90-minute hands-on practical session. Have students work in pairs to compare results across prompt variations.
+      </div>
+    </section>
+
+    <!-- Slide 8: Key Takeaways -->
+    <section class="slide hidden flex-col gap-6" data-slide="8">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-emerald-400">Wrap-up</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Summary & Best Practices</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 space-y-3">
+          <h3 class="font-bold text-emerald-400 text-sm">What Makes It Work:</h3>
+          <ul class="space-y-2 text-slate-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Clean directory structure with separated data & metadata.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Specifying exact mathematical thresholds in your prompt.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Requiring automated test execution before finalizing code.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Automating figures & Quarto reports for reproducible deliverables.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 space-y-3">
+          <h3 class="font-bold text-cyan-400 text-sm">The Student's Role:</h3>
+          <p class="text-slate-300 leading-relaxed">
+            Agentic coding elevates the student from a <em>code writer</em> struggling with syntax to a <em>scientific director</em> validating biological findings, challenging hypotheses, and verifying statistical rigor.
+          </p>
+          <div class="bg-emerald-950/30 border border-emerald-800/40 p-3 rounded-lg text-emerald-300 text-[11px]">
+            <strong>FGCZ Mission:</strong> Equipping life scientists with cutting-edge computational autonomy.
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center p-3 text-xs text-slate-500">
+        Functional Genomics Center Zurich (FGCZ) • University of Zurich & ETH Zurich
+      </div>
+
+      <div class="speaker-note hidden bg-emerald-950/40 border border-emerald-800/50 rounded-lg p-4 text-xs text-emerald-200">
+        <strong>💡 Teaching Goal:</strong> Conclude by emphasizing that coding speed is now secondary to scientific validation and experimental intuition.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Nav -->
+  <footer class="w-full bg-slate-900/90 border-t border-slate-800 px-6 py-4 flex items-center justify-between sticky bottom-0 z-50">
+    <div class="text-xs text-slate-400 hidden sm:block">
+      Use <kbd class="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 font-mono text-slate-300">←</kbd> <kbd class="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 font-mono text-slate-300">→</kbd> to navigate • Press <kbd class="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 font-mono text-slate-300">N</kbd> for notes
+    </div>
+    <div class="flex items-center space-x-3 mx-auto sm:mx-0">
+      <button onclick="prevSlide()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium rounded-lg text-xs border border-slate-700 transition flex items-center space-x-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        <span>Previous</span>
+      </button>
+      <button onclick="nextSlide()" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded-lg text-xs shadow-lg shadow-emerald-900/30 transition flex items-center space-x-1.5">
+        <span>Next</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 8;
+
+    function showSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlide = index;
+
+      document.querySelectorAll('.slide').forEach(slide => {
+        slide.classList.remove('slide-active');
+        slide.classList.add('hidden');
+      });
+
+      const activeSlide = document.querySelector(`.slide[data-slide="${currentSlide}"]`);
+      if (activeSlide) {
+        activeSlide.classList.remove('hidden');
+        activeSlide.classList.add('slide-active');
+      }
+
+      document.getElementById('slideCounter').textContent = `Slide ${currentSlide} / ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) showSlide(currentSlide - 1);
+    }
+
+    function toggleNotes() {
+      const notes = document.querySelectorAll('.speaker-note');
+      notes.forEach(note => note.classList.toggle('hidden'));
+      const btn = document.getElementById('toggleNotesBtn');
+      if (notes[0] && !notes[0].classList.contains('hidden')) {
+        btn.classList.add('bg-emerald-600', 'text-white');
+      } else {
+        btn.classList.remove('bg-emerald-600', 'text-white');
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key.toLowerCase() === 'n') {
+        toggleNotes();
+      }
+    });
+  </script>
+</body>
+</html>

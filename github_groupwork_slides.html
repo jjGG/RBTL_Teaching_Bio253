@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collaborative GitHub Workflows & Student Projects | FGCZ</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide-active {
+      display: flex;
+      animation: fadeIn 0.25s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans select-none antialiased">
+
+  <!-- Header -->
+  <header class="w-full bg-slate-900/90 border-b border-slate-800 px-6 py-3 flex items-center justify-between backdrop-blur-md sticky top-0 z-50">
+    <div class="flex items-center space-x-3">
+      <span class="px-2.5 py-1 text-xs font-bold tracking-wider rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">FGCZ</span>
+      <span class="text-xs text-slate-400 font-medium hidden sm:inline">UZH | ETH Zurich</span>
+      <span class="text-slate-600">/</span>
+      <span class="text-sm font-semibold text-slate-200">GitHub Group Research Projects</span>
+    </div>
+    <div class="flex items-center space-x-4">
+      <span id="slideCounter" class="text-xs font-mono px-3 py-1 bg-slate-800/80 rounded-full border border-slate-700 text-slate-300">Slide 1 / 8</span>
+      <button id="toggleNotesBtn" onclick="toggleNotes()" class="text-xs px-3 py-1.5 rounded-lg bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-500/40 text-indigo-300 transition-all flex items-center space-x-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span>Speaker Notes</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide Canvas -->
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-8 flex flex-col justify-center">
+
+    <!-- Slide 1: Title & Banner -->
+    <section class="slide slide-active flex-col gap-6" data-slide="1">
+      <div class="relative overflow-hidden rounded-2xl border border-slate-800 shadow-2xl bg-slate-900 group">
+        <img src="./fgcz_github_groupwork_banner_1790927922039.jpg" 
+             alt="FGCZ GitHub Group Work Presentation Banner" 
+             class="w-full object-cover max-h-[380px] rounded-2xl filter brightness-95 contrast-105">
+      </div>
+      <div class="bg-slate-900/60 p-6 rounded-xl border border-slate-800/80">
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2">
+          Collaborative GitHub Workflows for Group Projects
+        </h1>
+        <p class="text-lg text-slate-300 font-light mb-4">
+          Team Development, Pull Requests, Code Reviews & End-of-Course Archival Strategies
+        </p>
+        <div class="flex flex-wrap gap-4 text-xs text-slate-400 border-t border-slate-800/80 pt-4">
+          <span>👥 <strong class="text-slate-300">Audience:</strong> Student Project Teams (3–5 members)</span>
+          <span>🌿 <strong class="text-slate-300">Methodology:</strong> Feature Branching & Peer Pull Requests</span>
+          <span>🏛️ <strong class="text-slate-300">Archival:</strong> Tagging & Cohort Branching for Future Years</span>
+        </div>
+      </div>
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Introduce students to professional open-source research collaboration using Git and GitHub. Stress that in science, code reproducibility and version control are just as critical as wet-lab lab notebooks.
+      </div>
+    </section>
+
+    <!-- Slide 2: The Core Philosophy of Group Repos -->
+    <section class="slide hidden flex-col gap-6" data-slide="2">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-indigo-400">Team Dynamics</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Why GitHub for Scientific Teamwork?</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm mb-3">01</div>
+            <h3 class="text-sm font-bold text-white mb-2">A Single Source of Truth</h3>
+            <p class="text-slate-400 leading-relaxed">
+              No more emailing zip files (<code class="text-slate-300">analysis_v2_final_FINAL.zip</code>). The repository contains the complete history, environment specifications, and current code state.
+            </p>
+          </div>
+          <div class="mt-4 p-2 bg-slate-950 rounded text-slate-500 font-mono text-[10px]">
+            git clone &nbsp;•&nbsp; git pull
+          </div>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-sm mb-3">02</div>
+            <h3 class="text-sm font-bold text-white mb-2">Parallel Division of Labor</h3>
+            <p class="text-slate-400 leading-relaxed">
+              Student A implements the data pre-processing, Student B builds the statistical test, and Student C creates the visualization simultaneously without overwriting each other.
+            </p>
+          </div>
+          <div class="mt-4 p-2 bg-slate-950 rounded text-slate-500 font-mono text-[10px]">
+            feature/data &nbsp;•&nbsp; feature/stats
+          </div>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm mb-3">03</div>
+            <h3 class="text-sm font-bold text-white mb-2">Peer Review & Quality Gates</h3>
+            <p class="text-slate-400 leading-relaxed">
+              Before code enters the master branch, team members review the diff, test the functionality, and suggest fixes directly on GitHub lines of code.
+            </p>
+          </div>
+          <div class="mt-4 p-2 bg-slate-950 rounded text-slate-500 font-mono text-[10px]">
+            Pull Requests &nbsp;•&nbsp; Approvals
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Overcome the common student reluctance to use branches. Many students try to push directly to `main` and get frustrated by merge conflicts. Show how branching prevents clashes.
+      </div>
+    </section>
+
+    <!-- Slide 3: Recommended Repository Anatomy -->
+    <section class="slide hidden flex-col gap-6" data-slide="3">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-indigo-400">Standardization</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Research Project Repository Structure</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center text-xs">
+        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-5 font-mono text-[11px] text-slate-300">
+          <div class="text-indigo-400 font-bold mb-3 flex items-center space-x-2">
+            <span>📦 fgcz-bio698-team-alpha/</span>
+          </div>
+          <div class="pl-4 space-y-1.5 border-l border-slate-700/60">
+            <div>├── <span class="text-cyan-300 font-semibold">README.md</span> <span class="text-slate-500">(Project abstract & quickstart)</span></div>
+            <div>├── <span class="text-emerald-300 font-semibold">environment.yml</span> <span class="text-slate-500">(Conda / renv dependencies)</span></div>
+            <div>├── <span class="text-amber-300 font-semibold">.gitignore</span> <span class="text-red-400 font-bold">★ NO large raw datasets!</span></div>
+            <div>├── <span class="text-purple-300 font-semibold">data/</span></div>
+            <div class="pl-4 text-slate-400">└── README.md <span class="text-slate-500">(Where to download raw files)</span></div>
+            <div>├── <span class="text-blue-300 font-semibold">src/</span></div>
+            <div class="pl-4 text-slate-400">├── __init__.py</div>
+            <div class="pl-4 text-slate-400">├── io.py <span class="text-slate-500">(Data parsers)</span></div>
+            <div class="pl-4 text-slate-400">└── stats.py <span class="text-slate-500">(Algorithms)</span></div>
+            <div>├── <span class="text-pink-300 font-semibold">notebooks/</span> <span class="text-slate-500">(Exploratory work)</span></div>
+            <div>└── <span class="text-teal-300 font-semibold">tests/</span> <span class="text-slate-500">(pytest / testthat unit tests)</span></div>
+          </div>
+        </div>
+
+        <div class="space-y-3.5">
+          <div class="p-3.5 bg-slate-900/80 border border-slate-800 rounded-xl">
+            <h4 class="font-bold text-cyan-300 mb-1">1. The Self-Explaining README</h4>
+            <p class="text-slate-300">Must include: Research question, dataset citation, installation instructions, and how to execute the main pipeline in 1 command.</p>
+          </div>
+          <div class="p-3.5 bg-slate-900/80 border border-slate-800 rounded-xl">
+            <h4 class="font-bold text-amber-300 mb-1">2. Data Storage Policy</h4>
+            <p class="text-slate-300">GitHub has a strict 100MB file limit. Students must document external data links (Zenodo, GEO, PRIDE) in <code class="text-amber-200">data/README.md</code>.</p>
+          </div>
+          <div class="p-3.5 bg-slate-900/80 border border-slate-800 rounded-xl">
+            <h4 class="font-bold text-emerald-300 mb-1">3. Deterministic Environments</h4>
+            <p class="text-slate-300">Lock package versions with <code class="text-emerald-200">environment.yml</code> or <code class="text-emerald-200">requirements.txt</code> so all teammates and the instructor can run the code.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Provide a template repository that students can "Use this template" to fork or generate on Day 1. This guarantees structural consistency across 15 student teams.
+      </div>
+    </section>
+
+    <!-- Slide 4: The Feature Branch Workflow -->
+    <section class="slide hidden flex-col gap-6" data-slide="4">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-indigo-400">Collaboration Model</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">The Feature Branch Lifecycle</h2>
+      </div>
+
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-5 text-xs text-slate-300 space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 text-center">
+          <div class="p-3 rounded-lg bg-slate-950 border border-slate-800">
+            <span class="text-indigo-400 font-bold block mb-1">1. Branch</span>
+            <code class="text-[10px] text-cyan-300">git checkout -b feat/qc</code>
+            <p class="text-[10px] text-slate-400 mt-2">Create an isolated branch off the latest main.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-950 border border-slate-800">
+            <span class="text-cyan-400 font-bold block mb-1">2. Commit</span>
+            <code class="text-[10px] text-emerald-300">git commit -m "Add PCA"</code>
+            <p class="text-[10px] text-slate-400 mt-2">Make small, logical commits with clear messages.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-950 border border-slate-800">
+            <span class="text-purple-400 font-bold block mb-1">3. Pull Request</span>
+            <code class="text-[10px] text-purple-300">gh pr create</code>
+            <p class="text-[10px] text-slate-400 mt-2">Open a PR on GitHub; tag teammates as reviewers.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-950 border border-slate-800">
+            <span class="text-emerald-400 font-bold block mb-1">4. Merge</span>
+            <code class="text-[10px] text-amber-300">Merge & Delete Branch</code>
+            <p class="text-[10px] text-slate-400 mt-2">Merge only after at least 1 teammate approves!</p>
+          </div>
+        </div>
+
+        <div class="p-4 bg-indigo-950/20 border border-indigo-800/40 rounded-xl flex items-center space-x-3 text-indigo-200">
+          <span class="text-xl">🛡️</span>
+          <div>
+            <strong>Golden Rule for Student Teams:</strong> The <code class="text-indigo-300 bg-slate-900 px-1 py-0.5 rounded">main</code> branch must always remain in a working, deployable state. Never push half-baked, broken code directly to main.
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Explain the mechanics of a Pull Request: It's an invitation for discussion. Teach students to write PR descriptions answering: "What did I change?" and "How do you test it?".
+      </div>
+    </section>
+
+    <!-- Slide 5: AI Coding with Git -->
+    <section class="slide hidden flex-col gap-6" data-slide="5">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-indigo-400">Agentic Integration</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Pairing AI Agents with Git Workflows</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 space-y-3">
+          <h3 class="font-bold text-cyan-400 text-sm">How AI Agents Assist Git:</h3>
+          <ul class="space-y-2 text-slate-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span><strong>Autonomous Branch Management:</strong> You can ask the agent: <em>"Checkout a new branch `feat/volcano-plot` and implement the visualization."</em></span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span><strong>Clean Diffs & Commits:</strong> Agents can inspect `git status`, stage files, and write descriptive commit messages following Conventional Commits.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span><strong>Drafting PR Summaries:</strong> The agent can summarize the diff into a markdown changelog ready to paste into GitHub.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 space-y-3">
+          <h3 class="font-bold text-amber-400 text-sm">Human Review Safeguards:</h3>
+          <ul class="space-y-2 text-slate-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 font-bold">⚠</span>
+              <span><strong>Review Before Merging:</strong> Teammates must review the agent's diff. Never let an AI merge directly into `main` unverified.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 font-bold">⚠</span>
+              <span><strong>Watch for Accidental File Addition:</strong> Ensure the agent hasn't accidentally staged huge cache files or `.DS_Store`.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 font-bold">⚠</span>
+              <span><strong>Automated CI Tests:</strong> Configure GitHub Actions to run unit tests automatically whenever a PR is opened.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Show students how AI fits smoothly into Git. In Antigravity or CLI agents, the agent can run terminal commands (`git add`, `git commit`) on the student's behalf, making version control effortless.
+      </div>
+    </section>
+
+    <!-- Slide 6: End-of-Course Archival Strategy -->
+    <section class="slide hidden flex-col gap-6" data-slide="6">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-purple-400">Course Administration</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Archiving & Branching for Future Years</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center text-xs">
+        <div class="space-y-3.5">
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-purple-500/30">
+            <h4 class="font-bold text-purple-300 mb-1">1. Immutable Git Release Tags</h4>
+            <p class="text-slate-300">
+              When the submission deadline arrives, lock the exact state with a lightweight or annotated Git tag:
+            </p>
+            <div class="mt-2 font-mono text-[10px] bg-slate-950 p-2 rounded text-purple-300 border border-slate-800">
+              git tag -a hs26-final -m "HS2026 Final Evaluation"<br>
+              git push origin hs26-final
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-cyan-500/30">
+            <h4 class="font-bold text-cyan-300 mb-1">2. Cohort Reference Branches</h4>
+            <p class="text-slate-300">
+              Create a permanent branch to preserve the year's work, enabling you to reset `main` for next year's template:
+            </p>
+            <div class="mt-2 font-mono text-[10px] bg-slate-950 p-2 rounded text-cyan-300 border border-slate-800">
+              git checkout -b cohort/hs2026<br>
+              git push origin cohort/hs2026
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-3.5">
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-emerald-500/30">
+            <h4 class="font-bold text-emerald-300 mb-1">3. GitHub Native Repo Archival</h4>
+            <p class="text-slate-300">
+              In <em>Settings ➔ Danger Zone ➔ Archive Repository</em>. Converts the repo into read-only mode: all issues, PRs, and commits are permanently preserved without risk of tampering.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-amber-500/30">
+            <h4 class="font-bold text-amber-300 mb-1">4. The "Hall of Fame" Benchmark</h4>
+            <p class="text-slate-300">
+              Select the top 2 project repos and showcase them as anonymized reference benchmarks for next year's students to study as gold standards.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Show instructors how to prevent repos from becoming messy or disappearing. Tagging + cohort branches ensure clean pedagogical institutional memory year after year.
+      </div>
+    </section>
+
+    <!-- Slide 7: Step-by-Step Instructor Protocol -->
+    <section class="slide hidden flex-col gap-6" data-slide="7">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-indigo-400">Playbook</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Instructor Archival Workflow (CLI Steps)</h2>
+      </div>
+
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-5 text-xs font-mono text-slate-300 space-y-4">
+        <div>
+          <span class="text-indigo-400 font-bold block mb-1"># 1. Fetch all student branches and tags</span>
+          <div class="bg-slate-950 p-2.5 rounded border border-slate-800 text-slate-300 text-[11px]">
+            git fetch --all --tags
+          </div>
+        </div>
+
+        <div>
+          <span class="text-cyan-400 font-bold block mb-1"># 2. Tag the final submission commit</span>
+          <div class="bg-slate-950 p-2.5 rounded border border-slate-800 text-slate-300 text-[11px]">
+            git checkout main<br>
+            git tag -a hs26-final -m "Final evaluated code for HS2026"<br>
+            git push origin hs26-final
+          </div>
+        </div>
+
+        <div>
+          <span class="text-emerald-400 font-bold block mb-1"># 3. Create a cohort snapshot branch</span>
+          <div class="bg-slate-950 p-2.5 rounded border border-slate-800 text-slate-300 text-[11px]">
+            git branch cohort/hs2026-final hs26-final<br>
+            git push origin cohort/hs2026-final
+          </div>
+        </div>
+
+        <div>
+          <span class="text-purple-400 font-bold block mb-1"># 4. (Optional) Reset main to clean template for next cohort (HS2027)</span>
+          <div class="bg-slate-950 p-2.5 rounded border border-slate-800 text-slate-300 text-[11px]">
+            git checkout -B main template-starter<br>
+            git push origin main --force-with-lease
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Walk instructors through the exact git commands to capture student final work without losing commit histories or grade records.
+      </div>
+    </section>
+
+    <!-- Slide 8: Summary & Team Rubric -->
+    <section class="slide hidden flex-col gap-6" data-slide="8">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-indigo-400">Evaluation</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Group Project Evaluation Checklist</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 space-y-3">
+          <h3 class="font-bold text-indigo-400 text-sm">Grading Criteria:</h3>
+          <ul class="space-y-2 text-slate-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☑</span>
+              <span><strong>Branching Discipline:</strong> Were features built on separate branches and merged via PRs?</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☑</span>
+              <span><strong>Peer Code Reviews:</strong> Did team members leave thoughtful review comments on each other's code?</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☑</span>
+              <span><strong>Clean Commit History:</strong> Are commit messages descriptive and atomic?</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☑</span>
+              <span><strong>Reproducibility:</strong> Can the instructor run the pipeline from the README in 1 command?</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 space-y-3">
+          <h3 class="font-bold text-cyan-400 text-sm">FGCZ Life Sciences Impact:</h3>
+          <p class="text-slate-300 leading-relaxed">
+            By mastering GitHub collaboration alongside AI agentic tools, students gain the exact skills required by leading computational biology labs, biotechnology start-ups, and academic consortia worldwide.
+          </p>
+          <div class="bg-indigo-950/30 border border-indigo-800/40 p-3 rounded-lg text-indigo-300 text-[11px]">
+            <strong>Result:</strong> Future-proof students trained in rigorous collaborative science.
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center p-3 text-xs text-slate-500">
+        Functional Genomics Center Zurich (FGCZ) • University of Zurich & ETH Zurich
+      </div>
+
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Wrap up by showing students that GitHub is not administrative overhead—it is their professional portfolio as bioinformaticians and researchers.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Nav -->
+  <footer class="w-full bg-slate-900/90 border-t border-slate-800 px-6 py-4 flex items-center justify-between sticky bottom-0 z-50">
+    <div class="text-xs text-slate-400 hidden sm:block">
+      Use <kbd class="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 font-mono text-slate-300">←</kbd> <kbd class="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 font-mono text-slate-300">→</kbd> to navigate • Press <kbd class="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 font-mono text-slate-300">N</kbd> for notes
+    </div>
+    <div class="flex items-center space-x-3 mx-auto sm:mx-0">
+      <button onclick="prevSlide()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium rounded-lg text-xs border border-slate-700 transition flex items-center space-x-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        <span>Previous</span>
+      </button>
+      <button onclick="nextSlide()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-lg text-xs shadow-lg shadow-indigo-900/30 transition flex items-center space-x-1.5">
+        <span>Next</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 8;
+
+    function showSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlide = index;
+
+      document.querySelectorAll('.slide').forEach(slide => {
+        slide.classList.remove('slide-active');
+        slide.classList.add('hidden');
+      });
+
+      const activeSlide = document.querySelector(`.slide[data-slide="${currentSlide}"]`);
+      if (activeSlide) {
+        activeSlide.classList.remove('hidden');
+        activeSlide.classList.add('slide-active');
+      }
+
+      document.getElementById('slideCounter').textContent = `Slide ${currentSlide} / ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) showSlide(currentSlide - 1);
+    }
+
+    function toggleNotes() {
+      const notes = document.querySelectorAll('.speaker-note');
+      notes.forEach(note => note.classList.toggle('hidden'));
+      const btn = document.getElementById('toggleNotesBtn');
+      if (notes[0] && !notes[0].classList.contains('hidden')) {
+        btn.classList.add('bg-indigo-600', 'text-white');
+      } else {
+        btn.classList.remove('bg-indigo-600', 'text-white');
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key.toLowerCase() === 'n') {
+        toggleNotes();
+      }
+    });
+  </script>
+</body>
+</html>

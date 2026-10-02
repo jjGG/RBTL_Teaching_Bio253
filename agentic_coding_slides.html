@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentic Coding in Life Sciences & Education | FGCZ</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide-active {
+      display: flex;
+      animation: fadeIn 0.25s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans select-none antialiased">
+
+  <!-- Top Header Bar -->
+  <header class="w-full bg-slate-900/90 border-b border-slate-800 px-6 py-3 flex items-center justify-between backdrop-blur-md sticky top-0 z-50">
+    <div class="flex items-center space-x-3">
+      <span class="px-2.5 py-1 text-xs font-bold tracking-wider rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">FGCZ</span>
+      <span class="text-xs text-slate-400 font-medium hidden sm:inline">UZH | ETH Zurich</span>
+      <span class="text-slate-600">/</span>
+      <span class="text-sm font-semibold text-slate-200">Agentic Coding in Academia</span>
+    </div>
+    <div class="flex items-center space-x-4">
+      <span id="slideCounter" class="text-xs font-mono px-3 py-1 bg-slate-800/80 rounded-full border border-slate-700 text-slate-300">Slide 1 / 8</span>
+      <button id="toggleNotesBtn" onclick="toggleNotes()" class="text-xs px-3 py-1.5 rounded-lg bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-500/40 text-indigo-300 transition-all flex items-center space-x-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span>Speaker Notes</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide Stage -->
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-8 flex flex-col justify-center">
+
+    <!-- Slide 1: Title & Banner -->
+    <section class="slide slide-active flex-col gap-6" data-slide="1">
+      <div class="relative overflow-hidden rounded-2xl border border-slate-800 shadow-2xl bg-slate-900 group">
+        <img src="./fgcz_agentic_coding_banner_1790891166206.jpg" 
+             alt="FGCZ Agentic Coding Course Banner" 
+             class="w-full object-cover max-h-[380px] rounded-2xl filter brightness-95 contrast-105">
+      </div>
+      <div class="bg-slate-900/60 p-6 rounded-xl border border-slate-800/80">
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2">
+          Teaching Agentic Coding in Higher Education
+        </h1>
+        <p class="text-lg text-slate-300 font-light mb-4">
+          Navigating the Landscape: <span class="text-cyan-400 font-medium">Antigravity vs. Claude Code</span>, Token Economics & Free Student Setups
+        </p>
+        <div class="flex flex-wrap gap-4 text-xs text-slate-400 border-t border-slate-800/80 pt-4">
+          <span>🏛️ <strong class="text-slate-300">Host:</strong> Functional Genomics Center Zurich (FGCZ)</span>
+          <span>🎓 <strong class="text-slate-300">Institutions:</strong> University of Zurich & ETH Zurich</span>
+          <span>🎯 <strong class="text-slate-300">Focus:</strong> Practical zero-cost pathways for university students</span>
+        </div>
+      </div>
+      <!-- Notes 1 -->
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Set the context for students and instructors. Explain that while instructors often have enterprise/pro subscriptions, students need a clear, zero-cost, friction-free way to learn agentic workflows without incurring unexpected cloud charges.
+      </div>
+    </section>
+
+    <!-- Slide 2: What is Agentic Coding? -->
+    <section class="slide hidden flex-col gap-6" data-slide="2">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-cyan-400">Core Foundations</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">The Paradigm Shift: From Copilot to Autonomous Agent</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- Level 1 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center font-bold text-sm mb-3">1.0</div>
+            <h3 class="text-lg font-semibold text-slate-200 mb-2">Chat Assistant</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">Copy/paste code snippets into a browser window. Disconnected from your file system, compiler, or tests.</p>
+          </div>
+          <div class="text-[11px] font-mono bg-slate-950/70 p-2.5 rounded border border-slate-800 text-slate-400">
+            Manual copy → Paste → Debug manually
+          </div>
+        </div>
+
+        <!-- Level 2 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-blue-900/50 text-blue-400 flex items-center justify-center font-bold text-sm mb-3">2.0</div>
+            <h3 class="text-lg font-semibold text-blue-200 mb-2">Inline Copilot</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">Autocomplete suggestions as you type. Reactive single-line / small block predictions based on surrounding open tabs.</p>
+          </div>
+          <div class="text-[11px] font-mono bg-slate-950/70 p-2.5 rounded border border-slate-800 text-slate-400">
+            Tab completion → Passive assistance
+          </div>
+        </div>
+
+        <!-- Level 3 -->
+        <div class="bg-gradient-to-b from-cyan-950/30 to-slate-900/80 border border-cyan-500/40 rounded-xl p-5 flex flex-col justify-between shadow-lg shadow-cyan-950/20">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-sm mb-3">3.0</div>
+            <h3 class="text-lg font-semibold text-cyan-200 mb-2">Agentic Coding</h3>
+            <p class="text-xs text-slate-300 leading-relaxed mb-4">Autonomous execution loops: Reads files, executes commands, fixes lint errors, runs tests, inspects outputs, and iterates.</p>
+          </div>
+          <div class="text-[11px] font-mono bg-cyan-950/50 p-2.5 rounded border border-cyan-800/50 text-cyan-300">
+            Plan → Read → Tool Call → Test → Verify
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800 rounded-lg p-4 flex items-center space-x-3 text-xs text-slate-300">
+        <span class="text-cyan-400 font-bold">Key Insight:</span>
+        <span>Agents consume vastly more tokens than copilots because each iteration feeds tool results, directory searches, and test logs back into the context window.</span>
+      </div>
+
+      <!-- Notes 2 -->
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Emphasize that "agentic" means the AI operates with tool access (reading files, running bash, editing multi-line diffs). This explains why tokens deplete fast: every step carries forward the conversation history and environment state.
+      </div>
+    </section>
+
+    <!-- Slide 3: Tool Comparison -->
+    <section class="slide hidden flex-col gap-6" data-slide="3">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-cyan-400">Tool Selection for Students</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Free Tier Reality: Antigravity vs. Claude Code</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Antigravity Card -->
+        <div class="bg-slate-900/90 border border-emerald-500/40 rounded-xl p-6 relative overflow-hidden flex flex-col justify-between">
+          <div class="absolute top-0 right-0 bg-emerald-500/20 border-b border-l border-emerald-500/30 text-emerald-300 text-[10px] font-bold px-3 py-1 uppercase tracking-wider rounded-bl-lg">
+            Free Option Available
+          </div>
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-xl">🚀</div>
+              <div>
+                <h3 class="text-lg font-bold text-white">Google Antigravity</h3>
+                <p class="text-xs text-emerald-400 font-medium">Free Individual Tier ($0)</p>
+              </div>
+            </div>
+
+            <ul class="space-y-3 text-xs text-slate-300 mb-6">
+              <li class="flex items-start space-x-2">
+                <span class="text-emerald-400 font-bold">✓</span>
+                <span><strong>No credit card needed:</strong> Accessible with any standard Google account.</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-emerald-400 font-bold">✓</span>
+                <span><strong>Full Agent Capabilities:</strong> Includes autonomous file editing, terminal execution, subagents, and diffs.</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-emerald-400 font-bold">✓</span>
+                <span><strong>Unlimited Tab Completions:</strong> Code completions and inline prompt edits do not consume agent quota.</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-amber-400 font-bold">⚠</span>
+                <span><strong>Weekly Agent Budget:</strong> Autonomous multi-turn loops are capped weekly for free users.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-emerald-950/30 border border-emerald-800/40 rounded-lg p-3 text-[11px] text-emerald-300">
+            <strong>Classroom Verdict:</strong> Recommended for student labs. Zero barrier to entry.
+          </div>
+        </div>
+
+        <!-- Claude Code Card -->
+        <div class="bg-slate-900/90 border border-rose-500/40 rounded-xl p-6 relative overflow-hidden flex flex-col justify-between">
+          <div class="absolute top-0 right-0 bg-rose-500/20 border-b border-l border-rose-500/30 text-rose-300 text-[10px] font-bold px-3 py-1 uppercase tracking-wider rounded-bl-lg">
+            Paywall Only
+          </div>
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-xl">⚡</div>
+              <div>
+                <h3 class="text-lg font-bold text-white">Claude Code (Anthropic)</h3>
+                <p class="text-xs text-rose-400 font-medium">No Free Tier Available</p>
+              </div>
+            </div>
+
+            <ul class="space-y-3 text-xs text-slate-300 mb-6">
+              <li class="flex items-start space-x-2">
+                <span class="text-rose-400 font-bold">✗</span>
+                <span><strong>No Free CLI Access:</strong> Web free tier does NOT grant Claude Code terminal access.</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-rose-400 font-bold">✗</span>
+                <span><strong>Mandatory Subscription:</strong> Requires Claude Pro ($20/mo) or prepaid Anthropic API credits.</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-slate-400 font-bold">•</span>
+                <span><strong>Top-tier reasoning:</strong> Exceptional code architecture with Sonnet/Opus models.</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-amber-400 font-bold">⚠</span>
+                <span><strong>Shared Quota:</strong> Coding in terminal shares your 5-hour web chat quota.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-rose-950/30 border border-rose-800/40 rounded-lg p-3 text-[11px] text-rose-300">
+            <strong>Classroom Verdict:</strong> Great for instructors; impractical to require from students.
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes 3 -->
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Clarify the common misconception that because Claude has a free web chat, Claude Code must be free. It is not. Students cannot run `claude` in the terminal without a paid account or pre-funded API key.
+      </div>
+    </section>
+
+    <!-- Slide 4: Tokens & Context Windows -->
+    <section class="slide hidden flex-col gap-6" data-slide="4">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-cyan-400">Context Architectures</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Context Windows & Token Economics</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <!-- Visual Comparison Bars -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 space-y-6">
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300">Context Window Capacity</h3>
+          
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="font-medium text-cyan-400">Google Gemini (Antigravity Pro / API)</span>
+              <span class="font-mono text-cyan-300 font-bold">1,000,000 – 2,000,000 Tokens</span>
+            </div>
+            <div class="w-full bg-slate-800 h-6 rounded-full overflow-hidden p-0.5 border border-slate-700">
+              <div class="bg-gradient-to-r from-blue-500 to-cyan-400 h-full rounded-full w-full flex items-center justify-end pr-2 text-[10px] font-bold text-slate-950">
+                100% (Entire Codebase + Docs + PDFs)
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="font-medium text-purple-400">Claude (Pro / Team / Sonnet)</span>
+              <span class="font-mono text-purple-300 font-bold">200,000 Tokens</span>
+            </div>
+            <div class="w-full bg-slate-800 h-6 rounded-full overflow-hidden p-0.5 border border-slate-700">
+              <div class="bg-gradient-to-r from-purple-500 to-indigo-400 h-full rounded-full w-[15%] flex items-center justify-center text-[10px] font-bold text-white">
+                ~15%
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="font-medium text-slate-400">Standard Web Chat / Free Session Memory</span>
+              <span class="font-mono text-slate-400 font-bold">~16,000 – 32,000 Tokens</span>
+            </div>
+            <div class="w-full bg-slate-800 h-6 rounded-full overflow-hidden p-0.5 border border-slate-700">
+              <div class="bg-slate-600 h-full rounded-full w-[3%]"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Practical Implications -->
+        <div class="space-y-4">
+          <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+            <h4 class="text-sm font-semibold text-cyan-300 mb-1">What 1M–2M Tokens Unlocks for You:</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              You can feed an entire multi-package repository, full API documentation, RNA-seq pipeline configs, and scientific reference papers in a single turn without loss of recall.
+            </p>
+          </div>
+
+          <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+            <h4 class="text-sm font-semibold text-purple-300 mb-1">What 200k Tokens Excels At:</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Ample for focused module refactors, microservices, and deep reasoning tasks. Claude's prompt caching discounts cached tokens by 90%, making repeated edits very cost-efficient.
+            </p>
+          </div>
+
+          <div class="bg-amber-950/30 border border-amber-800/40 rounded-xl p-4 text-xs text-amber-200">
+            <strong>⚠️ The Student Bottleneck:</strong> Even with a 1M token window, free tier users face <em>Tokens-Per-Minute (TPM)</em> rate limits. If a student tries to ingest a whole directory repeatedly, they will hit a temporary rate block.
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes 4 -->
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Demystify context window numbers. 1 token ≈ 0.75 English words or ~4 characters of code. A 200k window is roughly 500 pages of code; 1M is ~2,500 pages. Explain the difference between capacity (window) and velocity (rate limits).
+      </div>
+    </section>
+
+    <!-- Slide 5: Quota & Refresh Models -->
+    <section class="slide hidden flex-col gap-6" data-slide="5">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-cyan-400">Quota Mechanics</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Paid Subscriptions vs. Free Tiers: Refresh Cycles</h2>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border border-slate-800 rounded-xl overflow-hidden bg-slate-900/70">
+          <thead class="bg-slate-800/80 text-slate-300 uppercase font-mono tracking-wider text-[11px]">
+            <tr>
+              <th class="p-3.5 border-b border-slate-700">Plan Tier</th>
+              <th class="p-3.5 border-b border-slate-700">Refresh Cycle</th>
+              <th class="p-3.5 border-b border-slate-700">Agent Loops Allowance</th>
+              <th class="p-3.5 border-b border-slate-700">Model Access</th>
+              <th class="p-3.5 border-b border-slate-700">Failure Mode</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 text-slate-300">
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-3.5 font-semibold text-emerald-400">Free Individual<br><span class="text-[10px] text-slate-400 font-normal">(Students)</span></td>
+              <td class="p-3.5 font-mono">Weekly Reset</td>
+              <td class="p-3.5">Standard quota for simple lab tasks</td>
+              <td class="p-3.5">Flash / lightweight models prioritized</td>
+              <td class="p-3.5 text-amber-400">Hard stop on agent runs until next week</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30 bg-cyan-950/20">
+              <td class="p-3.5 font-semibold text-cyan-300">Antigravity Pro / Ultra<br><span class="text-[10px] text-slate-400 font-normal">(Instructor Tier)</span></td>
+              <td class="p-3.5 font-mono text-cyan-400">5-Hour Rolling + Weekly Cap</td>
+              <td class="p-3.5 font-medium text-white">5× to 20× higher autonomous loops</td>
+              <td class="p-3.5">Priority Pro & deep reasoning models</td>
+              <td class="p-3.5 text-slate-300">Fall back to pay-as-you-go AI credits</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-3.5 font-semibold text-purple-300">Claude Pro ($20/mo)<br><span class="text-[10px] text-slate-400 font-normal">(Instructor Tier)</span></td>
+              <td class="p-3.5 font-mono text-purple-400">5-Hour Rolling Window</td>
+              <td class="p-3.5">~40–80 messages per 5h window</td>
+              <td class="p-3.5">Claude 3.5 Sonnet / 3.7 / Opus</td>
+              <td class="p-3.5 text-slate-300">Pause until next 5h window begins</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <div class="p-4 rounded-lg bg-slate-900 border border-slate-800">
+          <span class="text-cyan-400 font-bold">Why the Refresh Window Matters:</span>
+          <p class="text-slate-400 mt-1">If an instructor hits a quota limit in the morning, they are back online by the afternoon lab. If a student drains their weekly free quota on Monday, they cannot complete Friday's assignment.</p>
+        </div>
+        <div class="p-4 rounded-lg bg-slate-900 border border-slate-800">
+          <span class="text-emerald-400 font-bold">The Takeaway for Instructors:</span>
+          <p class="text-slate-400 mt-1">Never design homework where students ask the AI to "build everything from zero." Frame exercises around targeted modular tasks to safeguard their weekly quota.</p>
+        </div>
+      </div>
+
+      <!-- Notes 5 -->
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Help educators understand pedagogical pacing. A weekly reset creates a single point of failure for student deadlines. Explain how to safeguard student quotas with modular milestones.
+      </div>
+    </section>
+
+    <!-- Slide 6: Student Survival Guide -->
+    <section class="slide hidden flex-col gap-6" data-slide="6">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-emerald-400">Student Guidelines</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Free Tier Survival Guide: 4 Golden Rules</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Rule 1 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition">
+          <div class="flex items-center space-x-2 text-cyan-400 font-bold text-sm mb-2">
+            <span class="w-6 h-6 rounded bg-cyan-950 flex items-center justify-center border border-cyan-800 text-xs">1</span>
+            <h3>Strict Context Hygiene</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Always add a proper <code class="text-cyan-300 bg-slate-950 px-1 py-0.5 rounded">.gitignore</code>! Never let the agent crawl through <code class="text-slate-400">node_modules/</code>, <code class="text-slate-400">.venv/</code>, raw biological sequencing data (<code class="text-slate-400">.fastq</code>, <code class="text-slate-400">.bam</code>), or build caches.
+          </p>
+        </div>
+
+        <!-- Rule 2 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition">
+          <div class="flex items-center space-x-2 text-emerald-400 font-bold text-sm mb-2">
+            <span class="w-6 h-6 rounded bg-emerald-950 flex items-center justify-center border border-emerald-800 text-xs">2</span>
+            <h3>Scope Prompts to Specific Files</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Avoid broad prompts like <em>"Refactor my whole project"</em>. Instead, use targeted file links: <em>"In <code class="text-emerald-300 bg-slate-950 px-1 py-0.5 rounded">calc_stats.py</code>, optimize the sliding window function."</em>
+          </p>
+        </div>
+
+        <!-- Rule 3 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition">
+          <div class="flex items-center space-x-2 text-amber-400 font-bold text-sm mb-2">
+            <span class="w-6 h-6 rounded bg-amber-950 flex items-center justify-center border border-amber-800 text-xs">3</span>
+            <h3>Default to Flash Models</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Use fast, lightweight models (e.g. Gemini Flash) for initial prototyping, scaffolding, and unit tests. Reserve reasoning/Pro models only for complex algorithm debugging.
+          </p>
+        </div>
+
+        <!-- Rule 4 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition">
+          <div class="flex items-center space-x-2 text-purple-400 font-bold text-sm mb-2">
+            <span class="w-6 h-6 rounded bg-purple-950 flex items-center justify-center border border-purple-800 text-xs">4</span>
+            <h3>Leverage Free Tab Completions</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            In Antigravity, ghost-text inline tab completions and basic code commands are free and unlimited. Use them for standard coding flow before triggering autonomous agent runs.
+          </p>
+        </div>
+      </div>
+
+      <!-- Notes 6 -->
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Give students actionable habits they can implement immediately in their IDE. Good context hygiene is a fundamental software engineering skill in the era of AI.
+      </div>
+    </section>
+
+    <!-- Slide 7: Zero-Cost Plan B (Google AI Studio) -->
+    <section class="slide hidden flex-col gap-6" data-slide="7">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-cyan-400">Failsafe Architecture</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Plan B: Free Google AI Studio API Keys</h2>
+      </div>
+
+      <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6">
+        <h3 class="text-base font-semibold text-white mb-2">If students exhaust their weekly Antigravity agent quota:</h3>
+        <p class="text-xs text-slate-300 leading-relaxed mb-6">
+          Every student can obtain their own personal, completely free API key directly from <strong>Google AI Studio</strong> (<a href="https://aistudio.google.com" target="_blank" class="text-cyan-400 underline">aistudio.google.com</a>) using their standard Google account—no credit card required.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="bg-slate-950/70 border border-slate-800 p-4 rounded-lg">
+            <span class="text-cyan-400 font-mono font-bold block text-sm">15 RPM</span>
+            <span class="text-slate-400 mt-1 block">Requests per minute (Flash models) — plenty for real-time interactive coding.</span>
+          </div>
+          <div class="bg-slate-950/70 border border-slate-800 p-4 rounded-lg">
+            <span class="text-emerald-400 font-mono font-bold block text-sm">1,000,000 TPM</span>
+            <span class="text-slate-400 mt-1 block">Tokens per minute free limit — ample for ingesting moderate codebases.</span>
+          </div>
+          <div class="bg-slate-950/70 border border-slate-800 p-4 rounded-lg">
+            <span class="text-purple-400 font-mono font-bold block text-sm">1,500 RPD</span>
+            <span class="text-slate-400 mt-1 block">Requests per day — far higher than typical weekly IDE agent quotas.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-cyan-950/30 border border-cyan-800/40 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cyan-200">
+        <div>
+          <span class="font-bold">Plug-and-play into Open Source Agents:</span>
+          <p class="text-slate-300 mt-0.5">Students can configure this free key into CLI & VS Code tools: <strong>Aider</strong>, <strong>Continue.dev</strong>, or <strong>Roo Code</strong>.</p>
+        </div>
+        <div class="text-[11px] font-mono bg-slate-900 border border-cyan-700/50 px-3 py-1.5 rounded text-cyan-300 whitespace-nowrap">
+          export GEMINI_API_KEY="AIzaSy..."
+        </div>
+      </div>
+
+      <!-- Notes 7 -->
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> This is the instructor's safety net. If a student runs out of quota the night before a deadline, they are not stuck. Google AI Studio's free tier provides immediate relief.
+      </div>
+    </section>
+
+    <!-- Slide 8: Recommendations Checklist -->
+    <section class="slide hidden flex-col gap-6" data-slide="8">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs uppercase font-mono tracking-wider text-cyan-400">Action Plan</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Course Implementation Checklist</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- Student Setup -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+          <div class="flex items-center space-x-2 text-emerald-400 font-bold text-sm mb-3">
+            <span>🎒</span>
+            <h3>For Students (100% Free Setup)</h3>
+          </div>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☑</span>
+              <span>Install Antigravity & log in via university or personal Google account.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☑</span>
+              <span>Keep default model set to Flash / lightweight variants.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☑</span>
+              <span>Create <code class="text-cyan-300 bg-slate-950 px-1 py-0.5 rounded">.gitignore</code> in every project repo before running agents.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☑</span>
+              <span>Generate backup key at <a href="https://aistudio.google.com" target="_blank" class="text-cyan-400 underline">aistudio.google.com</a>.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Instructor Setup -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+          <div class="flex items-center space-x-2 text-cyan-400 font-bold text-sm mb-3">
+            <span>🧑‍🏫</span>
+            <h3>For Instructors (Pro / Subscription)</h3>
+          </div>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-cyan-400">☑</span>
+              <span>Use Claude Pro / Antigravity Pro to design problem sets & auto-graders.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-cyan-400">☑</span>
+              <span>Test assignments on a <em>free tier test account</em> to verify quota fit.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-cyan-400">☑</span>
+              <span>Break projects into 2–3 modular sub-tasks to prevent quota exhaustion.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-cyan-400">☑</span>
+              <span>Optional: Create Anthropic Org team pool with \$5 hard limit per student.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center p-4 bg-slate-900/50 rounded-xl border border-slate-800 text-xs text-slate-400">
+        Presentation complete. Ready for classroom delivery at <strong class="text-slate-200">FGCZ / UZH / ETH Zurich</strong>.
+      </div>
+
+      <!-- Notes 8 -->
+      <div class="speaker-note hidden bg-indigo-950/40 border border-indigo-800/50 rounded-lg p-4 text-xs text-indigo-200">
+        <strong>💡 Teaching Goal:</strong> Wrap up with clear action items. Remind students that responsible agent usage is about discipline, planning, and prompt precision—not burning infinite compute.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation Controls -->
+  <footer class="w-full bg-slate-900/90 border-t border-slate-800 px-6 py-4 flex items-center justify-between sticky bottom-0 z-50">
+    <div class="text-xs text-slate-400 hidden sm:block">
+      Use <kbd class="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 font-mono text-slate-300">←</kbd> <kbd class="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 font-mono text-slate-300">→</kbd> arrow keys to navigate
+    </div>
+    <div class="flex items-center space-x-3 mx-auto sm:mx-0">
+      <button onclick="prevSlide()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium rounded-lg text-xs border border-slate-700 transition flex items-center space-x-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        <span>Previous</span>
+      </button>
+      <button onclick="nextSlide()" class="px-5 py-2 bg-cyan-600 hover:bg-cyan-500 text-white font-medium rounded-lg text-xs shadow-lg shadow-cyan-900/30 transition flex items-center space-x-1.5">
+        <span>Next</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 8;
+
+    function showSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlide = index;
+
+      document.querySelectorAll('.slide').forEach(slide => {
+        slide.classList.remove('slide-active');
+        slide.classList.add('hidden');
+      });
+
+      const activeSlide = document.querySelector(`.slide[data-slide="${currentSlide}"]`);
+      if (activeSlide) {
+        activeSlide.classList.remove('hidden');
+        activeSlide.classList.add('slide-active');
+      }
+
+      document.getElementById('slideCounter').textContent = `Slide ${currentSlide} / ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        showSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    function toggleNotes() {
+      const notes = document.querySelectorAll('.speaker-note');
+      notes.forEach(note => {
+        note.classList.toggle('hidden');
+      });
+      const btn = document.getElementById('toggleNotesBtn');
+      if (notes[0] && !notes[0].classList.contains('hidden')) {
+        btn.classList.add('bg-indigo-600', 'text-white');
+      } else {
+        btn.classList.remove('bg-indigo-600', 'text-white');
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key.toLowerCase() === 'n') {
+        toggleNotes();
+      }
+    });
+  </script>
+</body>
+</html>
